@@ -7,7 +7,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname,'public/Site1')));
 
 app.post('/subscribe', (req, res) => {
     email = req.body.email
@@ -27,6 +27,7 @@ app.post('/subscribe', (req, res) => {
         method: 'POST',
         headers: {
             Authorization: 'auth e8bb5b66cd88f31725fe5e7e701dddc2-us21'
+
         },
         body: postData
     }
