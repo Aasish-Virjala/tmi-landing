@@ -11,7 +11,6 @@ app.use(express.static(path.join(__dirname,'public/Site1')));
 
 app.post('/subscribe', (req, res) => {
     email = req.body.email
-    console.log(email);
     const data = {
         members: [
             {
