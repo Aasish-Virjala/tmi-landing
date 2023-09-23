@@ -2,6 +2,11 @@ const express  = require('express')
 const request = require('request')
 const bodyParser = require('body-parser')
 const path = require('path')
+const fs = require('fs')
+const https = require('https')
+
+const key = fs.readFileSync('private.key')
+const cert = fs.readFileSync('certificate.crt')
 
 const app = express();
 
@@ -44,4 +49,12 @@ app.post('/subscribe', (req, res) => {
 
 const PORT = process.env.PORT || 80;
 
+const cred = {
+    key,
+    cert
+}
+
 app.listen(PORT, console.log(`Server started on ${PORT}`));
+
+const httpsServer = https.createServer(cred,app)
+httpsServer.listen(443)
